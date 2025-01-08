@@ -9,7 +9,7 @@ spec:
   template:
     metadata:
       labels:
-        dev: wp  # Label applied to newly created Pods
+        app: wp  # Label applied to newly created Pods
     spec:
       containers:
       - name: web-container
