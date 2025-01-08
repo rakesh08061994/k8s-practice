@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: advanced-selector-rs
+spec:
+  replicas: 4 #Requested pods number
+  selector:
+    matchExpressions:
+    - key: app  #This is the key name
+      operator: In  #In Operator means that, following matching labels is now being managed by RS
+      values:
+      - wp   #This is value1
+      - db   #This is value2
+  template:
+    metadata:
+      labels:
+        app: wp #Later scalling pods will create with this labels only  
+    spec:
+      containers:
+      - name: con1
+        image: nginx:latest
