@@ -1,0 +1,69 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-1
+  labels:
+    env: prod
+    app: wp
+spec:
+  containers:
+  - name: test-container
+    image: nginx:latest
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-2
+  labels:
+    env: prod
+    app: db
+spec:
+  containers:
+  - name: prod-container
+    image: nginx:latest
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-3
+  labels:
+    env: wp
+spec:
+  containers:
+  - name: prod-container
+    image: nginx:latest
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-4
+  labels:
+    env: prod
+spec:
+  containers:
+  - name: wp-container
+    image: nginx:latest
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-5
+  labels:
+    env: prod
+spec:
+  containers:
+  - name: db-container
+    image: nginx:latest
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-6
+  labels:
+    app: wp
+    env: test
+spec:
+  containers:
+  - name: wp-db-container
+    image: nginx:latest
