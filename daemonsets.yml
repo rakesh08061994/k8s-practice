@@ -1,0 +1,29 @@
+# Specifies the API version and the type of Kubernetes resource (DaemonSet)
+apiVersion: apps/v1
+kind: DaemonSet
+
+# Metadata section defines the name, namespace, and labels for the DaemonSet
+metadata:
+  name: fluentd-elasticsearch    # Name of the DaemonSet
+  namespace: kube-system         # Namespace where the DaemonSet will run
+  labels:
+    k8s-app: fluentd-logging     # Label to identify the DaemonSet
+
+# Specification of the DaemonSet
+spec:
+  selector:
+    # Selector to match the Pods managed by this DaemonSet
+    matchLabels:
+      name: fluentd-elasticsearch
+
+  template:
+    # Metadata for the Pods created by this DaemonSet
+    metadata:
+      labels:
+        name: fluentd-elasticsearch  # Labels for the Pods
+
+    spec:
+      containers:
+        # Definition of the container running in the Pods
+        - name: fluentd-elasticsearch            # Container name
+          image: quay.io/fluentd_elasticsearch/fluentd:v2.5.2 # Container image
